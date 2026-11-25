@@ -1,9 +1,4 @@
--- =====================================================================
--- 2(a) "ARPDAU is falling. Fix it."
--- First 30 days (Jan 1-30) vs last 30 days (Apr 1-30). Each period has
--- exactly two 2-day sales, so promotions do not bias the comparison.
--- ARPDAU = gross revenue / active player-days (same definitions as 1(a)).
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
