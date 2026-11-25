@@ -1,15 +1,4 @@
--- =====================================================================
--- 1(b) Retention cohort table
---   Cohort   = install week counted from 2026-01-01 (week 0 = Jan 1-7), so
---              no week is split across the start of the window. Only
---              installs inside the window (2025 installs were never
---              observed in their first days). Re-installs excluded.
---   Day N    = the device is active on install_date + N.
---   RULE for recent cohorts: a cell is shown only if the LAST installer of
---              that week has reached day N by 2026-04-30; otherwise NULL.
---              Partially-matured cells would mix in fewer players or count
---              "not yet happened" as churn, both of which look like a drop.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
