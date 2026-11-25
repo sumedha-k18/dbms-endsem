@@ -1,44 +1,8 @@
--- =====================================================================
--- 4. Predict which currently-active players will stop playing for the
---    next 14 days - built and evaluated entirely in SQL.
---
--- SETUP
---   Unit       : a PERSON (linked re-install devices rolled up to the
---                original), otherwise a player who changed phone looks
---                like a churner on the old device.
---   As of      : weekly snapshot dates t.
---   Who        : people active at least once in [t-6, t] ("currently
---                active") AND installed at least 7 days before t.
---                Excluded: brand-new players (< 7 days) - their churn is an
---                onboarding problem, solved by the tutorial, not an offer.
---   Label      : churned = 1 if NO active day in [t+1, t+14].
---   Features   : only data on or before t.
---
--- SPLIT (out-of-time, because the model will be used on FUTURE weeks and the
--- player mix is changing fast):
---   train : t = Jan 29 ... Mar 19 (8 weekly snapshots, labels end Apr 2)
---   valid : t = Apr 2  (labels Apr 3-16)  - used to choose the smoothing
---   test  : t = Apr 16 (labels Apr 17-30) - touched once, reported
---   No label window of train overlaps valid/test.
---
--- MODEL: a smoothed "risk table" (a scorecard). Churn rate is learned on
--- train for every cell of recency x frequency x tenure x payer x trend
--- (4 x 4 x 3 x 2 x 3 = 288 cells), shrunk towards the recency x frequency
--- rate when the cell is small:
---     score = (churners_cell + K * rate_parent) / (n_cell + K)
--- K is chosen on the VALID snapshot (section 4a): K = 5 and K = 25 tie
--- (AUC 0.6873 vs 0.6871); K = 25 is used because it is less jumpy on small cells.
--- It is the SQL equivalent of a logistic regression with interactions on
--- bucketed features, and every number in it can be read off a table.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
 \pset null '—'
-
--- ---------------------------------------------------------------------
--- 0. WHY 14 DAYS? Look at the data before picking a definition.
--- ---------------------------------------------------------------------
 DROP TABLE IF EXISTS p_active;
 CREATE TEMP TABLE p_active AS
 SELECT DISTINCT p.person_id, a.activity_date AS d
