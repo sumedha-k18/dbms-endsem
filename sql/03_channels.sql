@@ -1,24 +1,4 @@
--- =====================================================================
--- 3. Do acquisition channels differ in player quality?
---
--- Population: NEW installs (re-installs excluded), Jan 1 - Mar 31, so every
---   player has a complete 30-day window. All metrics are measured from each
---   player's own install date, so every player gets the same amount of time.
--- Metrics:
---   d7         engagement: 1 if active on install_date + 7
---   days30     engagement: number of active days in days 0-29
---   payer30    revenue:    1 if any purchase in days 0-29
---   rev30      revenue:    gross USD spent in days 0-29
--- Statistics (all in SQL):
---   raw difference  = mean(channel) - mean(baseline),
---                     95% CI = diff +/- 1.96 * sqrt(var_a/n_a + var_b/n_b)
---   adjusted diff.  = difference computed inside each stratum (tier x platform)
---                     and averaged with weights = stratum share of all installs.
---                     Var = SUM w^2 (var_a/n_a + var_b/n_b). This compares like
---                     with like (a US iPhone player with a US iPhone player).
---   MDE             = 2.8 * SE  (smallest difference detectable with 80% power
---                     at 5% significance)
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
