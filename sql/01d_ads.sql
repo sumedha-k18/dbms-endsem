@@ -1,12 +1,4 @@
--- =====================================================================
--- 1(d) Rewarded ad engagement (uses ad_views: timestamps shifted -8h)
--- ad_daily_count behaves as "the n-th ad interaction of that player-day":
--- rows with count = 1 equal the number of player-days exactly (checked
--- below), although rows are not in timestamp order. So a player-day hit the
--- cap if its highest ad_daily_count reached ad_daily_cap. A stricter version
--- counts only COMPLETED views towards the cap.
--- Denominator = player-days with at least one ad interaction.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
