@@ -1,0 +1,43 @@
+--- row counts: raw vs clean ---
+               check_name                |   value   
+-----------------------------------------+-----------
+ ad rows on an inactive day, SHIFTED -8h | 0
+ ad rows on an inactive day, RAW clock   | 330348
+ purchases with no player_day row        | 2449
+ refunds                                 | 226
+ refunds $                               | 3249.74
+ clean purchases (positive)              | 15078
+ gross revenue clean $                   | 217593.22
+ raw_purchase rows                       | 15426
+ gross revenue raw $ (with duplicates)   | 219434.02
+ distinct purchase_id                    | 15304
+ active_days rows                        | 669864
+ first purchase before install date      | 110
+ re-installs (linked devices)            | 3211
+ player_day rows                         | 667435
+ players                                 | 80295
+(15 rows)
+
+--- installs per week (install volume is NOT flat) ---
+ install_week | week_start | installs | paid_video | tier4 
+--------------+------------+----------+------------+-------
+            0 | 2026-01-01 |     2129 |        333 |   392
+            1 | 2026-01-08 |     2272 |        336 |   455
+            2 | 2026-01-15 |     2274 |        360 |   389
+            3 | 2026-01-22 |     2166 |        311 |   370
+            4 | 2026-01-29 |     2271 |        340 |   426
+            5 | 2026-02-05 |     2262 |        335 |   410
+            6 | 2026-02-12 |     2333 |        368 |   448
+            7 | 2026-02-19 |     2360 |        502 |   565
+            8 | 2026-02-26 |     2976 |       1037 |  1045
+            9 | 2026-03-05 |     3466 |       1576 |  1520
+           10 | 2026-03-12 |     3937 |       2107 |  1958
+           11 | 2026-03-19 |     4629 |       2679 |  2481
+           12 | 2026-03-26 |     5123 |       3195 |  2954
+           13 | 2026-04-02 |     5700 |       3804 |  3438
+           14 | 2026-04-09 |     6303 |       4364 |  3962
+           15 | 2026-04-16 |     6486 |       4603 |  4165
+           16 | 2026-04-23 |     6666 |       4681 |  4223
+           17 | 2026-04-30 |      942 |        662 |   611
+(18 rows)
+

@@ -1,0 +1,58 @@
+=== The "obvious" comparison: every player in the file, all revenue seen in the window ===
+ acquisition_channel | players | window_rev_per_player 
+---------------------+---------+-----------------------
+ organic             |   24554 |                  3.66
+ paid_social         |   21705 |                  3.31
+ paid_video          |   34036 |                  1.64
+
+=== Raw means per channel (new installs Jan-Mar, 30-day horizon) ===
+   channel   | installs | d7_pct | active_days_30 | payer30_pct | rev30_usd 
+-------------+----------+--------+----------------+-------------+-----------
+ organic     |    12444 |   26.4 |           7.09 |        13.3 |      2.45
+ paid_social |    11068 |   25.7 |           6.90 |        13.2 |      2.21
+ paid_video  |    12482 |   24.6 |           6.84 |         8.9 |      1.52
+ —           |    35994 |   25.6 |           6.95 |        11.7 |      2.05
+
+=== Why raw numbers mislead: the mix of each channel ===
+   channel   | pct_tier1 | pct_tier2 | pct_tier3 | pct_tier4 | pct_ios 
+-------------+-----------+-----------+-----------+-----------+---------
+ organic     |      33.6 |      25.9 |      22.2 |      18.3 |    36.7
+ paid_social |      34.5 |      25.3 |      21.8 |      18.4 |    36.1
+ paid_video  |      11.0 |       8.4 |      15.2 |      65.3 |    20.4
+
+=== Within-tier means: D7 % and 30-day revenue per install ===
+ tier | d7_organic | d7_social | d7_video | rev_organic | rev_social | rev_video 
+------+------------+-----------+----------+-------------+------------+-----------
+    1 |       26.8 |      25.9 |     23.6 |        3.74 |       3.18 |      3.36
+    2 |       27.7 |      26.3 |     26.0 |        2.34 |       2.15 |      1.95
+    3 |       26.7 |      25.8 |     24.5 |        1.80 |       1.71 |      1.66
+    4 |       23.7 |      24.5 |     24.6 |        1.02 |       1.04 |      1.12
+
+=== Differences with 95% CIs: raw vs adjusted (tier x platform strata) ===
+  metric   |        comparison        | baseline | raw_diff |      raw_95ci      | adj_diff |      adj_95ci      | adj_diff_pct |   z   | signif_5pct | mde_80pct_power 
+-----------+--------------------------+----------+----------+--------------------+----------+--------------------+--------------+-------+-------------+-----------------
+ 1_d7      | paid_social - organic    |   0.2644 |  -0.0072 | [-0.0184, 0.0041]  |  -0.0041 | [-0.0162, 0.0080]  |         -1.6 | -0.67 | no          |          0.0172
+ 1_d7      | paid_video - organic     |   0.2644 |  -0.0185 | [-0.0293, -0.0077] |  -0.0127 | [-0.0252, -0.0003] |         -4.8 | -2.00 | yes         |          0.0178
+ 1_d7      | paid_video - paid_social |   0.2572 |  -0.0114 | [-0.0225, -0.0002] |  -0.0086 | [-0.0214, 0.0042]  |         -3.3 | -1.32 | no          |          0.0183
+ 2_days30  | paid_social - organic    |   7.0929 |  -0.1925 | [-0.2685, -0.1165] |  -0.1992 | [-0.2814, -0.1169] |         -2.8 | -4.75 | yes         |          0.1175
+ 2_days30  | paid_video - organic     |   7.0929 |  -0.2542 | [-0.3277, -0.1808] |  -0.3017 | [-0.3869, -0.2164] |         -4.3 | -6.93 | yes         |          0.1218
+ 2_days30  | paid_video - paid_social |   6.9004 |  -0.0618 | [-0.1363, 0.0127]  |  -0.1025 | [-0.1890, -0.0160] |         -1.5 | -2.32 | yes         |          0.1236
+ 3_payer30 | paid_social - organic    |   0.1325 |  -0.0005 | [-0.0092, 0.0082]  |  -0.0012 | [-0.0096, 0.0072]  |         -0.9 | -0.28 | no          |          0.0120
+ 3_payer30 | paid_video - organic     |   0.1325 |  -0.0434 | [-0.0512, -0.0356] |  -0.0070 | [-0.0162, 0.0023]  |         -5.2 | -1.47 | no          |          0.0132
+ 3_payer30 | paid_video - paid_social |   0.1320 |  -0.0429 | [-0.0510, -0.0349] |  -0.0058 | [-0.0152, 0.0037]  |         -4.4 | -1.20 | no          |          0.0135
+ 4_rev30   | paid_social - organic    |   2.4472 |  -0.2393 | [-0.5199, 0.0413]  |  -0.1831 | [-0.4360, 0.0698]  |         -7.5 | -1.42 | no          |          0.3613
+ 4_rev30   | paid_video - organic     |   2.4472 |  -0.9284 | [-1.1865, -0.6703] |  -0.1626 | [-0.4767, 0.1515]  |         -6.6 | -1.01 | no          |          0.4487
+ 4_rev30   | paid_video - paid_social |   2.2079 |  -0.6891 | [-0.9423, -0.4360] |   0.0204 | [-0.2950, 0.3359]  |          0.9 |  0.13 | no          |          0.4506
+
+=== Why revenue is so noisy: share of 30-day revenue from the top 1% of installs ===
+ top1pct_share 
+---------------
+         0.425
+
+=== Re-installs by channel (they are excluded above, but attribution credits them as new) ===
+ acquisition_channel | reinstalls | pct_of_installs 
+---------------------+------------+-----------------
+ organic             |        682 |             3.9
+ paid_social         |        605 |             3.9
+ paid_video          |       1276 |             4.0
+
