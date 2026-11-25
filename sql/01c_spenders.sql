@@ -1,15 +1,8 @@
--- =====================================================================
--- 1(c) Spender behaviour
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
 
--- ---- 1(c)-i Revenue concentration -------------------------------------
--- Unit = person (linked devices rolled up). Revenue = net of refunds.
--- Main answer ranks PAYERS ONLY (net revenue > 0). The "all players"
--- version is shown for comparison: ~86% of people pay $0, so "top 10% of
--- everyone" already contains every payer and the shares look extreme.
 \qecho '=== 1(c)-i revenue concentration ==='
 WITH gross AS (
     SELECT p.person_id, SUM(pu.usd_amount) AS g
