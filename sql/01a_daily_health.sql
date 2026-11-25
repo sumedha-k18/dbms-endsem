@@ -1,12 +1,4 @@
--- =====================================================================
--- 1(a) Daily health, by day and platform
---   DAU          = distinct devices with an active day (player_day OR purchase)
---   gross_rev    = positive, de-duplicated purchases that day (refunds shown separately)
---   ARPDAU       = gross_rev / DAU
---   payer_share  = distinct purchasing devices / DAU
--- Numerator and denominator come from the same population (active_days
--- includes every purchaser), so payer_share can never exceed 100%.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 SET client_min_messages = warning;
 \pset footer off
