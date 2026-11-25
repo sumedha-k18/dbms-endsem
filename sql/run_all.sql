@@ -1,10 +1,4 @@
--- =====================================================================
--- run_all.sql - runs the whole analysis and writes every result to outputs/
---   createdb game_analytics            (once)
---   cd <project root>
---   psql -d game_analytics -f sql/run_all.sql
--- Takes about 1 minute. CSVs are expected in data/.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 \o outputs/00_load_and_clean.txt
 \i sql/00_load_and_clean.sql
