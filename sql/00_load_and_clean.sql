@@ -1,11 +1,4 @@
--- =====================================================================
--- 00_load_and_clean.sql   (PostgreSQL 17, run with psql from the project root)
---   psql -d game_analytics -f sql/00_load_and_clean.sql
---
--- Step 1: create raw tables and load the 5 CSVs exactly as delivered.
--- Step 2: build CLEAN tables. Every data-quality fix lives here, so all
---         later queries use the same rules.
--- =====================================================================
+
 \set ON_ERROR_STOP on
 \timing off
 SET client_min_messages = warning;
